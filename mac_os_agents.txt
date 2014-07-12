@@ -1,0 +1,111 @@
+CFNetwork/1.1,		Mac OS X 10.2	 	 
+CFNetwork/1.2.1,	Mac OS X 10.3.2	 	 
+CFNetwork/1.2.2,	Mac OS X 10.3.9	 	 
+CFNetwork/1.2.6,	Mac OS X 10.3.9	 	 
+CFNetwork/128,		Mac OS X 10.4.0 (PPC)	
+CFNetwork/128,		Mac OS X 10.4.1 (PPC)	
+CFNetwork/128.2,	Mac OS X 10.4.2 (PPC)	
+CFNetwork/129.5,	Mac OS X 10.4.3 (PPC)	
+CFNetwork/129.9,	Mac OS X 10.4.4 (PPC)	
+CFNetwork/129.9,	Mac OS X 10.4.5 (PPC)	
+CFNetwork/129.10,	Mac OS X 10.4.4 (Intel)	
+CFNetwork/129.10,	Mac OS X 10.4.5 (Intel)	
+CFNetwork/129.13,	Mac OS X 10.4.6	
+CFNetwork/129.16,	Mac OS X 10.4.7	
+CFNetwork/129.18,	Mac OS X 10.4.8	
+CFNetwork/129.20,	Mac OS X 10.4.9	
+CFNetwork/129.21,	Mac OS X 10.4.10	
+CFNetwork/129.22,	Mac OS X 10.4.11	
+CFNetwork/217,		Mac OS X 10.5.0	
+CFNetwork/220,		Mac OS X 10.5.1	
+CFNetwork/221.5,	Mac OS X 10.5.2	
+CFNetwork/330,		Mac OS X 10.5.3	
+CFNetwork/330.4,	Mac OS X 10.5.4	
+CFNetwork/339.5,	Mac OS X 10.5.5	
+CFNetwork/422.11,	Mac OS X 10.5.6	
+CFNetwork/438.12,	Mac OS X 10.5.7	
+CFNetwork/438.14,	Mac OS X 10.5.8	
+CFNetwork/454.4,	Mac OS X 10.6.0	
+CFNetwork/454.5,	Mac OS X 10.6.2	
+CFNetwork/454.9.4,	Mac OS X 10.6.3	
+CFNetwork/454.9.7,	Mac OS X 10.6.4	
+CFNetwork/454.11.5,	Mac OS X 10.6.5	
+CFNetwork/454.11.5,	Mac OS X 10.6.6	
+CFNetwork/454.11.12,	Mac OS X 10.6.7	
+CFNetwork/454.12.4,	Mac OS X 10.6.8	
+CFNetwork/459,		iOS 3.1.3	
+CFNetwork/485.2,	iOS 4	
+CFNetwork/485.10.2,	iOS 4.1	
+CFNetwork/485.12.7,	iOS 4.2.1	
+CFNetwork/485.12.30,	iOS 4.2.8	
+CFNetwork/485.13.9,	iOS 4.3.2	
+CFNetwork/485.13.9,	iOS 4.3.5	
+CFNetwork/520.0.13,	Mac OS X 10.7.1	
+CFNetwork/520.2.5,	Mac OS X 10.7.2	
+CFNetwork/520.3.2,	Mac OS X 10.7.3	
+CFNetwork/520.4.3,	Mac OS X 10.7.4	
+CFNetwork/520.5.1,	Mac OS X 10.7.5	
+CFNetwork/520.5.3,	Mac OS X 10.7.5
+CFNetwork/548.0.3,	iOS 5	
+CFNetwork/548.0.4,	iOS 5.0.1	
+CFNetwork/548.1.4,	iOS 5.1	
+CFNetwork/596.0.1,	Mac OS X 10.8.0	
+CFNetwork/596.1,	Mac OS X 10.8.1	
+CFNetwork/596.2.3,	Mac OS X 10.8.2	
+CFNetwork/596.3.3,	Mac OS X 10.8.3	
+CFNetwork/596.4.3,	Mac OS X 10.8.4	
+CFNetwork/596.5,	Mac OS X 10.8.5	
+CFNetwork/596.6.2,	Mac OS X 10.8.5
+CFNetwork/602,		iOS 6.0-b3	
+CFNetwork/609,		iOS 6.0	
+CFNetwork/609,		iOS 6.0.1	
+CFNetwork/609.1.4,	iOS 6.1.2	
+CFNetwork/609.1.4,	iOS 6.1.3	
+CFNetwork/609.1.4,	iOS 6.1.4	
+CFNetwork/672.0.2,	iOS 7.0	
+CFNetwork/672.0.2,	iOS 7.0.1	
+CFNetwork/672.0.2,	iOS 7.0.2	
+CFNetwork/672.0.8,	iOS 7.0.3	
+CFNetwork/672.0.8,	iOS 7.0.4	
+CFNetwork/672.0.8,	iOS 7.0.5	
+CFNetwork/672.0.8,	iOS 7.0.6	
+CFNetwork/672.1.9,	Apple Unknown 	
+CFNetwork/672.1.10,	Apple Unknown
+CFNetwork/672.1.11,	Apple Unknown
+CFNetwork/672.1.12,	iOS 7.1-b5	
+CFNetwork/672.1.13,	iOS 7.1	
+CFNetwork/672.1.14,	iOS 7.1.1	
+CFNetwork/672.1.15,	iOS 7.1.2	
+CFNetwork/673.0.3,	Mac OS X 10.9.0	
+CFNetwork/673.0.3,	Mac OS X 10.9.1	
+CFNetwork/673.2.1,	Mac OS X 10.9.2	
+CFNetwork/673.3,	Mac OS X 10.9.3 beta	
+CFNetwork/673.4,	Mac OS X 10.9.3	
+CFNetwork/673.4,	Mac OS X 10.9.4	
+Darwin/0.1, 		Mac OS X DP
+Darwin/0.2, 		Mac OS X DP2
+Darwin/1.0,		Mac OS X DP3
+Darwin/1.1,		Mac OS X DP4
+Darwin/1.2.1,		Mac OS X Public Beta
+Darwin/1.3.1,		Mac OS X 10.0
+Darwin/1.4.1,		Mac OS X 10.1
+Darwin/5.1,		Mac OS X 10.1.1
+Darwin/5.5,		Mac OS X 10.1.5
+Darwin/6.0.1,		Mac OS X 10.2
+Darwin/6.8,		Mac OS X 10.2.8
+Darwin/7.0,		Mac OS X 10.3
+Darwin/7.9,		Mac OS X 10.3.9
+Darwin/8.0,		Mac OS X 10.4
+Darwin/8.8.2,		Mac OS X for Apple TV
+Darwin/8.11,		Mac OS X 10.4.11
+Darwin/9.0,		Mac OS X 10.5
+Darwin/9.0.0d1,		iOS 1
+Darwin/9.8,		Mac OS X 10.5.8
+Darwin/10.0,		Mac OS X 10.6
+Darwin/10.8,		Mac OS X 10.6.8
+Darwin/11.0.0,		Mac OS X 10.7
+Darwin/11.4.2,		Mac OS X 10.7.5
+Darwin/12.0.0,		Mac OS X 10.8
+Darwin/12.5.0,		Mac OS X 10.8.5
+Darwin/13.0.0,		Mac OS X 10.9
+Darwin/14.0.0,		Mac OS X 10.10

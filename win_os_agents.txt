@@ -1,0 +1,8 @@
+Windows NT 4.0, 	Windows NT 4.0
+Windows NT 5.0,		Windows 2000
+Windows NT 5.1,		Windows XP
+Windows NT 5.2,		Windows XP/2003
+Windows NT 6.0,		Windows Vista/2008
+Windows NT 6.1,		Windows 7/2008R2
+Windows NT 6.2,		Windows 8/2012
+Windows NT 6.3,		Windows 8.1/2012R2

@@ -18,11 +18,11 @@ today = datetime.datetime.today()
 timeDelta = datetime.timedelta(days=7)
 nDaysBefore = today - timeDelta
 nDaysBefore = parser.parse(str(nDaysBefore))
-#year = str(nDaysBefore.year)
-#month = str(nDaysBefore.month).zfill(2)
-#day = str(nDaysBefore.day).zfill(2)
+# year = str(nDaysBefore.year)
+# month = str(nDaysBefore.month).zfill(2)
+# day = str(nDaysBefore.day).zfill(2)
 
-#ts = year+'_'+month+'_'+day
+# ts = year+'_'+month+'_'+day
 
 client = MongoClient()
 
@@ -78,5 +78,5 @@ for name in dbs:
 	ts = name.split('_dhcp_log_')[1].replace("_", "-")
 	if parser.parse(ts) < nDaysBefore:
 	    client.drop_database(name)
-#print dbs
+# print dbs
 client.close()

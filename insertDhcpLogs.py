@@ -12,6 +12,14 @@ from dateutil import parser
 import datetime
 import subprocess
 
+def fill_zero(mac_address):
+    if len(mac_address) == 17:
+	return mac_address
+    else:
+        octets = mac_address.split(":")
+        octets = [octet.zfill(2) for octet in octets]
+        return octets[0]+":"+octets[1]+":"+octets[2]+":"+octets[3]+":"+octets[4]+":"+octets[5]
+
 pattern = re.compile(r'(\w+\s*\d+\s*\d+:\d+:\d+).*?DHCPACK on.*?(\d+.\d+.\d+.\d+)\s+to\s+([\w\d]+:[\w\d]+:[\w\d]+:[\w\d]+:[\w\d]+:[\w\d]+)\s+\(?([:.\w\d-]*)\)?\s*via.*')
 
 command = 'tail -F /data/dhcplog/dhcp.log'

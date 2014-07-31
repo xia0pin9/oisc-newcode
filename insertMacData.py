@@ -50,6 +50,11 @@ def getTodaysDate():
     day = str(today.day).zfill(2)
     return year+'_'+month+'_'+day
 
+def fill_zero(mac_address):
+    if len(mac_address) != 17:
+        mac_address = ":".join([x.zfill(2) for x in mac_address.split(":")])
+    return mac_address
+
 # Execution starts from here
 
 gTimestamp = ''
@@ -92,7 +97,7 @@ while 1:
             #record['_id'] = id
             record['timestamp'] = parser.parse(gTimestamp)
             record['ip_address'] = ip_address
-            record['mac_address'] = mac_address
+            record['mac_address'] = fill_zero(mac_address)
             coll.insert(record)
 inFile.close()
 conn.close()

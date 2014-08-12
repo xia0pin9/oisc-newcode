@@ -114,7 +114,7 @@ def get_platform(user_agent):
 
 command = 'tail -F /data/tslog/ts.log'
 
-pattern = re.compile(r'[.:\w\s]+ TrueSight: (\d+/\d+/\d+\s+\d+:\d+:\d+)'
+pattern = re.compile(r'[.:\w\s]+ TrueSight: (\d+/\d+/\d+\s+\d+:\d+:\d+\.\d+)'
                      '.*CIP: (.*) URL: (.*) UserAgent: (.*) Referrer: (.*)'
                      ' SIP: (.*) SP: (.*) Username: (.*)')
 
@@ -132,7 +132,7 @@ for line in iter(p.stdout.readline, ''):
         remote_port = matched.group(7)
         user_agent = matched.group(4)
         platform = get_platform(user_agent)
-        if platform is not None:
+        if client_ip != "":
             if IP(client_ip).iptype() == "PRIVATE" or \
                     client_ip.startswith("129.130."):
                 tsDay = date.strftime("%Y_%m_%d")

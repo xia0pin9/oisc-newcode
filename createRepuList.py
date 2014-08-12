@@ -120,7 +120,6 @@ for document in idscoll.find():
                 source = "IDSn - ARP"
             else:
                 mac = fill_zero(get_mac_from_dhcp(requestb))
-                print "Test1", requestb
                 if mac != "":
                     source = "IDSn - DHCP"
         if mac != "" and mac != "00":
@@ -134,12 +133,11 @@ for document in idscoll.find():
                 record['first_time'] = document['timestamp']
                 record['last_time'] = document['timestamp']
                 record['count'] = 1
-                #osrepucoll.insert(record)
+                osrepucoll.insert(record)
             else:
-                pass
-                #osrepucoll.update(record, {'$inc': {'count': 1},
-                #                  '$set': {'last_time': document['timestamp']
-                #                  }}, upsert=True, multi=False)
+                osrepucoll.update(record, {'$inc': {'count': 1},
+                                  '$set': {'last_time': document['timestamp']
+                                  }}, upsert=True, multi=False)
     else:
         request['ip_address'] = firewall_ip
         request['timestamp'] = ts_range
@@ -148,7 +146,6 @@ for document in idscoll.find():
             source = "IDS - ARP"
         else:
             mac = fill_zero(get_mac_from_dhcp(request))
-            print "Test2", request
             if mac != "":
                 source = "IDS - DHCP"
         if mac != "" and mac != "00":
@@ -162,12 +159,11 @@ for document in idscoll.find():
                 record['first_time'] = document['timestamp']
                 record['last_time'] = document['timestamp']
                 record['count'] = 1
-                #osrepucoll.insert(record)
+                osrepucoll.insert(record)
             else:
-                pass
-                #osrepucoll.update(record, {'$inc': {'count': 1},
-                #                  '$set': {'last_time': document['timestamp']
-                #                  }}, upsert=True, multi=False)
+                osrepucoll.update(record, {'$inc': {'count': 1},
+                                  '$set': {'last_time': document['timestamp']
+                                  }}, upsert=True, multi=False)
 
 tsdb = client["ts_ua_log_" + lastHour.strftime("%Y_%m_%d")]
 tscoll = tsdb["tsua_" + lastHour.strftime("%Y_%m_%d_%H")]
@@ -186,7 +182,6 @@ for document in tscoll.find():
         source = "TrueSight - ARP"
     else:
         mac = fill_zero(get_mac_from_dhcp(request))
-        print "Test3", request
         if mac != "":
             source = "TrueSight - DHCP"
     if mac != "" and mac != "00":
@@ -200,12 +195,11 @@ for document in tscoll.find():
             record['first_time'] = document['timestamp']
             record['last_time'] = document['timestamp']
             record['count'] = 1
-            #osrepucoll.insert(record)
+            osrepucoll.insert(record)
         else:
-            pass
-            #osrepucoll.update(record, {'$inc': {'count': 1},
-            #                  '$set': {'last_time': document['timestamp']
-            #                  }}, upsert=True, multi=False)
+            osrepucoll.update(record, {'$inc': {'count': 1},
+                              '$set': {'last_time': document['timestamp']
+                              }}, upsert=True, multi=False)
 
 client.close()
 fwclient.close()

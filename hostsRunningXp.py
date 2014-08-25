@@ -3,7 +3,7 @@
 # This script tails the TrueSight log file and looks for requests from hosts running Windows XP
 # Inserts the record composed of client IP, user agent, and timestamp.
 
-from pymongo import Connection
+from pymongo import MongoClient 
 import ipaddress
 import os
 import re
@@ -47,26 +47,31 @@ pattern = re.compile(r'[.:\w\s]+ TrueSight: (\d+/\d+/\d+\s+\d+:\d+:\d+).*CIP: (.
 
 p = subprocess.Popen(command, stdout = subprocess.PIPE, shell = True)
 
-conn = Connection()
+client = MongoClient()
 
 for line in iter(p.stdout.readline,''):
     matched = pattern.match(line)
     if matched:
-        date = matched.group(1)
-        date = parser.parse(date)
-        client_ip = matched.group(2)
-        user_agent = matched.group(4)
-        platform = get_platform(user_agent)
-        
+        try:
+            date = matched.group(1)
+            date = parser.parse(date)
+            client_ip = matched.group(2)
+            user_agent = matched.group(4)
+            platform = get_platform(user_agent)
+        except:
+            print "Log error lifo:", line
+            continue
         if (platform is not None) and (is_home_network(client_ip)):
             tsDay = date.strftime("%Y_%m_%d")
             tsHour = date.strftime("%Y_%m_%d_%H")
             record = {}
             record["timestamp"] = date
-            record["_id"] = client_ip
+            record["client_ip"] = client_ip
             record["platform"] = platform
             db_name = 'xp_hosts_requests_db_'+tsDay
             coll_name = 'coll_'+tsHour
-            db = conn[db_name]
+            db = client[db_name]
             coll = db[coll_name]
             coll.insert(record)
+
+client.close()

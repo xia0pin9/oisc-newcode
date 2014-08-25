@@ -7,6 +7,8 @@ import re
 
 mac_os_ua = {}
 win_os_ua = {}
+
+
 with open("mac_os_agents.txt") as f:
     for line in f:
         cfn, os = line.strip().split(",")
@@ -15,6 +17,15 @@ with open("win_os_agents.txt") as f:
     for line in f:
         nt, os = line.strip().split(",")
         win_os_ua[nt] = os.strip()
+
+
+def follow(thefile):
+    thefile.seek(0,2) # Go to the end of the file
+    while True:
+        line = thefile.readline()
+        if not line:
+            continue
+        yield line
 
 
 def get_platform(user_agent):
@@ -101,16 +112,24 @@ def get_platform(user_agent):
         osversion = "Other" 
     return osversion
 
-command = 'tail -F /data/ids-ua/ids-ua.log'
+# command = 'tail -F /data/ids-ua/ids-ua.log'
 
-p = subprocess.Popen(command, stdout=subprocess.PIPE, shell=True)
+# p = subprocess.Popen(command, stdout=subprocess.PIPE, shell=True)
 
 client = MongoClient()
 
-for line in iter(p.stdout.readline, ''):
-    ts, fwip, fwport, remote_ip, remote_port, us = line.rstrip().split(",")
-    ts = parser.parse(ts.split("Strings:")[1].replace("/", "-"))
-    platform = get_platform(us)
+#for line in iter(p.stdout.readline, ''):
+for line in follow(open('/data/ids-ua/ids-ua.log')):
+    line_split = line.rstrip().split(",")
+    if len(line_split) < 6 or "snoopy UA-Strings" not in line:
+        continue   # Ignore incomplete logs
+    try:
+        ts, fwip, fwport, remote_ip, remote_port, us = line.rstrip().split(",")[:6]
+        ts = parser.parse(ts.split("Strings:")[1].replace("/", "-"))
+        platform = get_platform(us)
+    except:
+        print "Log line info:", line
+        raise
     if platform is not None:
         record = {}
         record['timestamp'] = ts

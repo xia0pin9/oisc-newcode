@@ -17,14 +17,26 @@ import time
 
 mac_os_ua = {}
 win_os_ua = {}
+
+
 with open("mac_os_agents.txt") as f:
     for line in f:
         cfn, os = line.strip().split(",")
         mac_os_ua[cfn] = os.strip()
+
+
 with open("win_os_agents.txt") as f:
     for line in f:
         nt, os = line.strip().split(",")
         win_os_ua[nt] = os.strip()
+
+def follow(thefile):
+    thefile.seek(0,2) # Go to the end of the file
+    while True:
+        line = thefile.readline()
+        if not line:
+            continue
+        yield line
 
 
 def get_platform(user_agent):
@@ -78,7 +90,10 @@ def get_platform(user_agent):
             elif osversion.count('.') == 2:
                 index_temp = osversion.split('.')[0] + "." + \
                     osversion.split('.')[1]
-                osversion = win_os_ua["Windows NT " + index_temp]
+                if "Windows NT " + index_temp in win_os_ua: 
+                    osversion = win_os_ua["Windows NT " + index_temp]
+                else:
+                    osversion = "Windows unknown"
             else:
                 osversion = "Windows " + osversion
         elif result2:
@@ -107,31 +122,35 @@ def get_platform(user_agent):
             "linux" in user_agent:
         osversion = "Linux"
 
-    if osversion == "":
+    if osversion == "" or osversion == None:
         osversion = "Other" 
     return osversion
 
 
-command = 'tail -F /data/tslog/ts.log'
+#command = 'tail -F /data/tslog/ts.log'
 
 pattern = re.compile(r'[.:\w\s]+ TrueSight: (\d+/\d+/\d+\s+\d+:\d+:\d+\.\d+)'
                      '.*CIP: (.*) URL: (.*) UserAgent: (.*) Referrer: (.*)'
                      ' SIP: (.*) SP: (.*) Username: (.*)')
 
-p = subprocess.Popen(command, stdout=subprocess.PIPE, shell=True)
+#p = subprocess.Popen(command, stdout=subprocess.PIPE, shell=True)
 
 client = MongoClient()
 
-for line in iter(p.stdout.readline, ''):
+for line in follow(open("/data/tslog/ts.log")):
     matched = pattern.match(line)
     if matched:
-        date = matched.group(1)
-        date = parser.parse(date)
-        client_ip = matched.group(2)
-        remote_ip = matched.group(6)
-        remote_port = matched.group(7)
-        user_agent = matched.group(4)
-        platform = get_platform(user_agent)
+	try:
+            date = matched.group(1)
+            date = parser.parse(date)
+            client_ip = matched.group(2)
+            remote_ip = matched.group(6)
+            remote_port = matched.group(7)
+            user_agent = matched.group(4)
+            platform = get_platform(user_agent)
+        except:
+            print "Log line info:", line
+            raise
         if client_ip != "":
             if IP(client_ip).iptype() == "PRIVATE" or \
                     client_ip.startswith("129.130."):
